@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="\login.component.css">
+  </head>
+  
+
+<body>
+
+<form action="/" style="border:1px solid #ccc" *ngIf="!isLoggedIn"
+name="form"
+(ngSubmit)="f.form.valid && onLogin()"
+#f="ngForm"
+novalidate>
+  <div class="container">
+    <h1>Hello!</h1>
+    <p> Sign in to your account.</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" [(ngModel)]="email" placeholder="Enter Email" name="email" required >
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" [(ngModel)]="password" placeholder="Enter Password" name="password" required>
+
+    <button type="submit" (click)="onLogin()" >Login</button>
+
+      <p style=" display:inline-block; width:75%; padding:0px">Don't have an account yet?</p>
+      <span class="psw"><a href="../register"> Click here</a></span>
+
+  </div>
+  <div class="form-group">
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && isLoginFailed"
+    >
+      Login failed: {{ errorMessage }}
+    </div>
+  </div>
+</form>
+<div class="alert alert-success" *ngIf="isLoggedIn">
+  Logged in Successfully.
+</div>
+</body>
+</html>
+
+<!-- <button (click)="onAddPost()">Login </button> -->

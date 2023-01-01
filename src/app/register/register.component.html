@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="\register.component.css">
+  </head>
+  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Authentication App</a>
+      
+    </div>
+  </nav>
+<body>
+
+<form action="/" (ngSubmit)="f.form.valid && onRegister()"
+#f="ngForm"
+novalidate style="border:1px solid #ccc" *ngIf="!isSuccessful">
+  <div class="container">
+    <h1>Hello!</h1>
+    <p> Register to Use.</p>
+    <hr>
+    
+    <label for="email"><b>Name</b></label>
+    <input type="text" [(ngModel)]="name" placeholder="Enter Name" name="name" required >
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" [(ngModel)]="email" placeholder="Enter Email" name="email" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" [(ngModel)]="password" placeholder="Enter Password" name="password" required>
+    
+    
+    <button type="submit" (click)="onRegister()" >Register</button>
+
+  </div>
+  <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+    Signup failed!<br />{{ errorMessage }}
+  </div>
+</form>
+<div class="alert alert-success" *ngIf="isSuccessful">
+  Your registration is successful!
+</div>
+
+</body>
+</html>
+
+<!-- <button (click)="onAddPost()">Login </button> -->
+
